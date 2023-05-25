@@ -1,0 +1,194 @@
+<div class="mdui-dialog" id="settings">
+	<div class="mdui-dialog-title">MikuInvidious 偏好设置</div>
+
+	<div class="mdui-dialog-content">
+	
+	<button class="mdui-btn mdui-color-theme-accent" mdui-menu="{target: '#quality-sel'}">修改首选画质</button>
+
+	<ul class="mdui-menu" id="quality-sel">
+		<li class="mdui-menu-item">
+			<a href="javascript:qnc(16);" class="mdui-ripple">360P 流畅</a>
+		</li>
+		<li class="mdui-menu-item">
+			<a href="javascript:qnc(32);" class="mdui-ripple">480P 流畅</a>
+		</li>
+		<li class="mdui-menu-item">
+			<a href="javascript:qnc(64);" class="mdui-ripple">720P 高清</a>
+		</li>
+		<li class="mdui-menu-item">
+			<a href="javascript:qnc(74);" class="mdui-ripple">720P60 高帧率</a>
+		</li>
+		<li class="mdui-menu-item">
+			<a href="javascript:qnc(80);" class="mdui-ripple">1080P 高清</a>
+		</li>
+		<li class="mdui-menu-item">
+			<a href="javascript:qnc(112);" class="mdui-ripple">1080P+ 高码率</a>
+		</li>
+		<li class="mdui-menu-item">
+			<a href="javascript:qnc(116);" class="mdui-ripple">1080P60 高帧率</a>
+		</li>
+	</ul>
+
+	<p class="mdui-typo-title">主题</p>
+	<form class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3" id="theme-sel">
+		<div class="mdui-col">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-layout" value="auto" checked="">
+				<i class="mdui-radio-icon"></i>
+				跟随浏览器
+			</label>
+		</div><div class="mdui-col">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-layout" value="light">
+				<i class="mdui-radio-icon"></i>
+				亮色主题
+			</label>
+		</div><div class="mdui-col">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-layout" value="dark">
+				<i class="mdui-radio-icon"></i>
+				暗黑主题
+			</label>
+		</div>
+	</form>
+
+
+	<p class="mdui-typo-title mdui-text-color-theme">主题色</p>
+	<form class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3" id="color-sel">
+		<div class="mdui-col mdui-text-color-amber">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="amber">
+				<i class="mdui-radio-icon"></i>
+				琥珀色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-blue">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="blue">
+				<i class="mdui-radio-icon"></i>
+				蓝色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-blue-grey">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="blue-grey">
+				<i class="mdui-radio-icon"></i>
+				蓝灰色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-brown">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="brown">
+				<i class="mdui-radio-icon"></i>
+				棕色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-cyan">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="cyan">
+				<i class="mdui-radio-icon"></i>
+				青色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-deep-orange">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="deep-orange">
+				<i class="mdui-radio-icon"></i>
+				深橙色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-deep-purple">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="deep-purple">
+				<i class="mdui-radio-icon"></i>
+				深紫色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-green">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="green">
+				<i class="mdui-radio-icon"></i>
+				绿色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-indigo">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="indigo">
+				<i class="mdui-radio-icon"></i>
+				靛青色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-light-blue">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="light-blue">
+				<i class="mdui-radio-icon"></i>
+				亮蓝色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-light-green">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="light-green">
+				<i class="mdui-radio-icon"></i>
+				亮绿色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-lime">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="lime">
+				<i class="mdui-radio-icon"></i>
+				草绿色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-orange">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="orange">
+				<i class="mdui-radio-icon"></i>
+				橙色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-pink">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="pink">
+				<i class="mdui-radio-icon"></i>
+				粉色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-purple">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="purple">
+				<i class="mdui-radio-icon"></i>
+				紫色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-red">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="red">
+				<i class="mdui-radio-icon"></i>
+				红色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-teal">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="teal">
+				<i class="mdui-radio-icon"></i>
+				蓝绿色
+			</label>
+		</div>
+		<div class="mdui-col mdui-text-color-yellow">
+			<label class="mdui-radio mdui-m-b-1">
+				<input type="radio" name="theme-primary" value="yellow">
+				<i class="mdui-radio-icon"></i>
+				黄色
+			</label>
+		</div>
+	</form>
+	</div>
+
+	<div class="mdui-divider"></div>
+
+	<div class="mdui-dialog-actions">
+		<button class="mdui-btn mdui-ripple" mdui-dialog-close>退出</button>
+	</div>
+</div>
+
+<script src="/static/js/common.js"></script>

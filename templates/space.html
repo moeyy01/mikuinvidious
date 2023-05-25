@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="referrer" content="never">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>用户空间 - MikuInvidious</title>
+	<link rel="stylesheet" href="/static/css/space.css">
+
+	<!-- MDUI CSS -->
+	<link
+	  rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+	/>
+
+	<!-- MDUI JavaScript -->
+	<script
+	  src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+	></script>
+</head>
+<body class="mdui-theme-primary-pink mdui-theme-layout-dark">
+	{% include 'toolbar.html' %}
+	<div class="mdui-container mdui-typo">
+		<div style="height: 2em;"></div>
+		<div class="mdui-row">
+			<div class="mdui-col-sm-3">
+				<img class="member-avatar" src="{{ info['face']|picproxy }}" />
+				<div class="member-level">
+					{% set level = info['level'] %}
+					{% include 'level.html' %}
+				</div>
+			</div>
+			<div class="mdui-col-sm-8 mdui-column">
+				<h1 class="member-title">{{ info['name'] }}<small><code>{{ info['mid'] }}</code></small></h1>
+				<div>
+						{% if info['fans_medal']['wear'] %}
+						<div class="mdui-chip" style="background-color: #{{ info['fans_medal']['medal']['medal_color']|hexcolor }};">
+							<span class="mdui-chip-title">{{ info['fans_medal']['medal']['medal_name'] }}</span>
+							<span class="mdui-chip-icon">{{ info['fans_medal']['medal']['level'] }}</span>
+						</div>
+						{% endif %}
+
+						<a class="mdui-float-right mdui-btn-raised" href="https://space.bilibili.com/{{ info['mid'] }}"><button class="mdui-btn mdui-btn-raised">在哔哩哔哩查看</button></a>
+					<p class="member-cum">{{ info['sign'] }}</p>
+				</div>
+			</div>
+		</div>
+
+		<h2>
+			{% set page_num = page['pn'] %}
+			{% set count = page['count']  %}
+			{% set ps = page['ps'] %}
+
+			第 {{ page['pn'] }} 页，共 {{ (count/ps)|ceil }} 页。
+
+			{% if page_num-1 != 0 %}
+			<a href="/space/{{ info['mid'] }}:{{ page_num-1 }}">
+			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
+				上一页
+			</button>
+			</a>
+			{% endif %}
+
+			{% if page_num+1 <= (count/ps)|ceil %}
+			<a href="/space/{{ info['mid'] }}:{{ page_num+1 }}">
+			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
+				下一页
+			</button>
+			</a>
+			{% endif %}
+		</h2>
+
+		<div class="mdui-row-xl-8 mdui-row-lg-6 mdui-row-md-4 mdui-col-sm-2" style="padding-top: 2em; width: 100%;">
+			{% for vid in vids['list']['vlist'] %}
+			<div class="mdui-col vidcol">
+				<div class="mdui-card preview-card">
+					<div class="mdui-card-media">
+						<img class="preview-pic" src="{{ vid['pic']|picproxy }}"/>
+						<div class="mdui-card-media-covered mdui-card-media-covered-transparent">
+							<div class="mdui-card-primary">
+								<div class="mdui-card-primary-subtitle mdui-color-theme-accent">播放：{{ vid['play'] }}</div>
+							</div>
+						</div>
+					</div>
+					<div class="mdui-card-actions">
+						<a href="/video/av{{ vid['aid'] }}">{{ vid['title'] }}</a>
+					</div>
+				</div>	
+			</div>
+			{% endfor %}
+		</div>
+
+		<h2 class="mdui-float-right">
+			第 {{ page['pn'] }} 页，共 {{ (count/ps)|ceil }} 页。
+
+			{% if page_num-1 != 0 %}
+			<a href="/space/{{ info['mid'] }}:{{ page_num-1 }}">
+			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
+				上一页
+			</button>
+			</a>
+			{% endif %}
+
+			{% if page_num+1 <= (count/ps)|ceil %}
+			<a href="/space/{{ info['mid'] }}:{{ page_num+1 }}">
+			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
+				下一页
+			</button>
+			</a>
+			{% endif %}
+		</h2>
+	</div>
+
+	{% include 'footer.html' %}
+</body>
+</html>

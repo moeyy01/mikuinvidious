@@ -1,0 +1,36 @@
+#video-player {
+	margin-top: 2em;
+}
+
+#subform {
+	float: right;
+	margin: 2px 0;
+	height: 32px;
+}
+
+.subvid-col {
+	margin-top: 2em;
+	height: 360px;
+	overflow: auto;
+}
+
+.subvid-col > ul {
+	list-style: upper-roman inside;
+}
+
+.relatedvid {
+	margin-top: 1em;
+}
+
+.normalspace {
+	white-space: pre-wrap;
+}
+
+.js-show {
+	display: block !important;
+}
+
+.clearlr-padding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}

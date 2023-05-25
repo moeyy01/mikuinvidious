@@ -1,0 +1,4 @@
+cache_time = 0
+always_video_proxy = True
+always_pic_proxy = False
+cookies = { 'SESSDATA=***; DedeUserID=***; DedeUserID__ckMd5=***' }

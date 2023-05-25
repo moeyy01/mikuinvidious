@@ -1,0 +1,33 @@
+.member-avatar {
+	width: 100%;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+.member-level {
+	z-index: 2;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+}
+
+.member-title {
+	padding-top: 2em;
+}
+
+.member-cum {
+	padding-top: 1em;
+	white-space: pre;
+}
+
+.preview-pic {
+	height: 11em;
+}
+
+.preview-card {
+	height: 15em;
+}
+
+.vidcol {
+	padding-bottom: 1em;
+}

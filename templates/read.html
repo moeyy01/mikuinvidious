@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="referrer" content="never">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ info['title'] }} - MikuInvidious</title>
+
+	<!-- MDUI CSS -->
+	<link
+	  rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+	/>
+
+	<!-- MDUI JavaScript -->
+	<script
+	  src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+	></script>
+</head>
+<body class="mdui-theme-primary-pink mdui-theme-layout-dark">
+	{% include 'toolbar.html' %}
+	<div class="mdui-container mdui-typo">
+		<h1 style="font-weight: bolder;">{{ info['title'] }} 
+			<a class="mdui-float-right" href="/space/{{ info['mid'] }}">{{ info['author_name'] }}</a>
+		</h1>
+		{{ article|safe }}
+	</div>
+	{% include 'footer.html' %}
+</body>
+</html>
