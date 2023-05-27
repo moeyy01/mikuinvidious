@@ -69,3 +69,4 @@ window.addEventListener('load', function() {
 	document.querySelector(`[href="javascript:qnc(${localStorage.getItem('mikuinvidious_quality')});"]`)
 			.classList.add('mdui-color-theme')
 }, false)
+

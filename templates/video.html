@@ -25,6 +25,16 @@
 		src="{{ url_for('video_view_info', vid = vidinfo['bvid'], cid = cid, qn = fmt['quality']) }}"
 	></script>
 	{% endfor %}
+	<script>
+	fetch('https://moeyy.cn/bilivideo/?av=&bv={{vidinfo['bvid']}}&p=1&q=80&format=mp4')
+        .then(response => response.json())
+        .then(data => {
+        var url = data.url;
+        var video = document.getElementById('my-video');
+        video.querySelector('source').src = url;
+        video.load();
+  });
+	</script>
 </head>
 <body class="mdui-theme-primary-pink mdui-theme-layout-dark">
 	{% include 'toolbar.html' %}
@@ -35,8 +45,10 @@
 			{% if vidinfo['videos'] > 1 %}
 			<div class="mdui-col-sm-9">
 			{% endif %}
-				<video id="video-player" class="mdui-center" width="640" height="360" controls poster="{{ vidinfo['pic'] }}">
-					<source id="video-source" src="/proxy/vid/{{ srcinfo['durl'][0]['url'] }}" type="video/mp4">
+				<!--<video id="video-player" class="mdui-center" width="640" height="360" controls poster="{{ vidinfo['pic'] }}">-->
+				<video id="my-video" class="mdui-center" width="640" height="360" controls poster="{{ vidinfo['pic'] }}">
+					<!--<source id="video-source" src="/proxy/vid/{{ srcinfo['durl'][0]['url'] }}" type="video/mp4">-->
+					<source id="video-source" src="" type="video/mp4">
 					<p>要观看本视频，您需要先启用 JavaScript 并考虑更新到一个 <a href="https://videojs.com/html5-video-support/" target="_blank">支持 html5 视频的浏览器</a>。</p>
 				</video>
 			{% if vidinfo['videos'] > 1 %}
@@ -75,7 +87,7 @@
 					<br/>
 					<a href="/embed/{{ vidinfo['bvid'] }}">嵌入式播放器</a>
 					<br/>
-					<div class="js-only mdui-hidden">
+					<!-- <div class="js-only mdui-hidden">
 						<button class="mdui-btn mdui-color-theme" mdui-menu="{target: '#qnselector'}">切换画质</button>
 						<ul class="mdui-menu" id="qnselector">
 							{% for fmt in srcinfo['support_formats'] %}
@@ -97,7 +109,7 @@
 						</select>
 						<input class="mdui-btn mdui-color-theme" type="submit" value="更换画质">
 						</form>
-					</div>
+					</div> -->
 					<br/>
 					<!-- Infomation -->
 					<i class="mdui-icon material-icons">&#xe8dc;</i> {{ vidinfo['stat']['like'] }} <br/>
