@@ -6,23 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>{{ vidinfo['title'] }} - MikuInvidious</title>
-	<link rel="stylesheet" href="/static/css/video.css">
+	<link rel="stylesheet" href="https://cdn.moeyy.cn/mikuinvidious/static/css/video.css">
 
 	<!-- MDUI CSS -->
 	<link
 	  rel="stylesheet"
-	  href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+	  href="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/css/mdui.min.css"
 	/>
 
 	<!-- MDUI JavaScript -->
 	<script
-	  src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+	  src="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/js/mdui.min.js"
 	></script>
 
 	<script>window.srcinfo = {};</script>
 	{% for fmt in srcinfo['support_formats'] %}
 	<script type="application/javascript"
-		src="{{ url_for('video_view_info', vid = vidinfo['bvid'], cid = cid, qn = fmt['quality']) }}"
+		src="/mikuinvidious{{ url_for('video_view_info', vid = vidinfo['bvid'], cid = cid, qn = fmt['quality']) }}"
 	></script>
 	{% endfor %}
 	<script>
@@ -65,7 +65,7 @@
 					<li class="mdui-list-item mdui-color-theme">{{ subvid['page'] }}. {{ subvid['part'] }}</li>
 					{% else %}
 					<li class="mdui-list-item mdui-ripple">
-						<a href="/video/{{ vidinfo['bvid'] }}:{{ subvid['cid'] }}">{{ subvid['page'] }}. {{ subvid['part'] }}</a>
+						<a href="/mikuinvidious/video/{{ vidinfo['bvid'] }}:{{ subvid['cid'] }}">{{ subvid['page'] }}. {{ subvid['part'] }}</a>
 					</li>
 					{% endif %}
 
@@ -83,9 +83,9 @@
 					<!-- Actions -->
 					<a href="https://bilibili.com/video/{{ vidinfo['bvid'] }}/">在哔哩哔哩观看</a>
 					<br/>
-					<a href="/switch">切换 MikuInvidious 实例</a>
+					<a href="/mikuinvidious/switch">切换 MikuInvidious 实例</a>
 					<br/>
-					<a href="/embed/{{ vidinfo['bvid'] }}">嵌入式播放器</a>
+					<a href="/mikuinvidious/embed/{{ vidinfo['bvid'] }}">嵌入式播放器</a>
 					<br/>
 					<!-- <div class="js-only mdui-hidden">
 						<button class="mdui-btn mdui-color-theme" mdui-menu="{target: '#qnselector'}">切换画质</button>
@@ -121,8 +121,8 @@
 
 			<div class="mdui-col-sm-7">
 				<div class="mdui-row">
-					<!-- <a href="/space/{{ vidinfo['owner']['mid'] }}"> -->
-					<a href="https://space.bilibili.com/{{ vidinfo['owner']['mid'] }}" target="_blank">
+					<a href="/mikuinvidious/space/{{ vidinfo['owner']['mid'] }}">
+					<!-- <a href="https://space.bilibili.com/{{ vidinfo['owner']['mid'] }}" target="_blank"> -->
 						<div class="mdui-chip">
 							<img class="mdui-chip-icon" src="{{ vidinfo['owner']['face']|picproxy }}"/>
 							<span class="mdui-chip-title">
@@ -165,7 +165,7 @@
 										<div class="mdui-card-header">
 											<img class="mdui-card-header-avatar" src="{{ comm['member']['avatar']|picproxy }}"/>
 											<div class="mdui-card-header-title">
-												<a href="/space/{{ comm['member']['mid'] }}">{{ comm['member']['uname'] }}</a>
+												<a href="/mikuinvidious/space/{{ comm['member']['mid'] }}">{{ comm['member']['uname'] }}</a>
 											</div>
 											<div class="mdui-card-header-subtitle">
 												{% set level = comm['member']['level_info']['current_level'] %}
@@ -213,7 +213,7 @@
 						</div>
 					</div>
 					<div class="mdui-card-actions">
-						<a href="/video/av{{ vid['aid'] }}">{{ vid['title'] }}</a>
+						<a href="/mikuinvidious/video/av{{ vid['aid'] }}">{{ vid['title'] }}</a>
 					</div>
 				</div>
 				</div>
@@ -224,6 +224,6 @@
 	</div>
 
 	{% include 'footer.html' %}
-	<script src="/static/js/video.js"></script>
+	<script src="https://cdn.moeyy.cn/mikuinvidious/static/js/video.js"></script>
 </body>
 </html>

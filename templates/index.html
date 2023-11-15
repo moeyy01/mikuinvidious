@@ -8,12 +8,12 @@
 	<!-- MDUI CSS -->
 	<link
 	  rel="stylesheet"
-	  href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+	  href="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/css/mdui.min.css"
 	/>
 
 	<!-- MDUI JavaScript -->
 	<script
-	  src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+	  src="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/js/mdui.min.js"
 	></script>
 </head>
 <body class="mdui-theme-primary-pink mdui-theme-layout-dark">
@@ -29,7 +29,7 @@
 				<div class="mdui-panel-item-body">
 					<ul class="mdui-list" style="padding-left: 0;">
 						{% for hotward in hotwards %}
-						<li class="mdui-list-item"><a href="{{ url_for('search_page', kwards=hotward['keyword']) }}"><h4>{{ hotward['keyword'] }}</h4></a></li>
+						<li class="mdui-list-item"><a href="/mikuinvidious{{ url_for('search_page', kwards=hotward['keyword']) }}"><h4>{{ hotward['keyword'] }}</h4></a></li>
 						{% endfor %}
 					</ul>
 				</div>

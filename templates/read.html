@@ -9,22 +9,22 @@
 	<!-- MDUI CSS -->
 	<link
 	  rel="stylesheet"
-	  href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+	  href="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/css/mdui.min.css"
 	/>
 
 	<!-- MDUI JavaScript -->
 	<script
-	  src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+	  src="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/js/mdui.min.js"
 	></script>
 </head>
 <body class="mdui-theme-primary-pink mdui-theme-layout-dark">
 	{% include 'toolbar.html' %}
 	<div class="mdui-container mdui-typo">
 		<h1 style="font-weight: bolder;">{{ info['title'] }} 
-			<a class="mdui-float-right" href="/space/{{ info['mid'] }}">{{ info['author_name'] }}</a>
+			<a class="mdui-float-right" href="/mikuinvidious/space/{{ info['mid'] }}">{{ info['author_name'] }}</a>
 		</h1>
 		{{ article|safe }}
 	</div>
 	{% include 'footer.html' %}
-</body>
+<script async src="https://cdn.moeyy.cn/umami/script.js" data-website-id="f939ed11-a113-4085-8cbe-a85eb3ee6db7" data-host-url="https://statistics.moeyy.cn"></script></body>
 </html>

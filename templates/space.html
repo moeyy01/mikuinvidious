@@ -6,17 +6,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>用户空间 - MikuInvidious</title>
-	<link rel="stylesheet" href="/static/css/space.css">
+	<link rel="stylesheet" href="https://cdn.moeyy.cn/mikuinvidious/static/css/space.css">
 
 	<!-- MDUI CSS -->
 	<link
 	  rel="stylesheet"
-	  href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+	  href="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/css/mdui.min.css"
 	/>
 
 	<!-- MDUI JavaScript -->
 	<script
-	  src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+	  src="https://cdn.moeyy.cn/unpkg/mdui@1.0.1/dist/js/mdui.min.js"
 	></script>
 </head>
 <body class="mdui-theme-primary-pink mdui-theme-layout-dark">
@@ -55,7 +55,7 @@
 			第 {{ page['pn'] }} 页，共 {{ (count/ps)|ceil }} 页。
 
 			{% if page_num-1 != 0 %}
-			<a href="/space/{{ info['mid'] }}:{{ page_num-1 }}">
+			<a href="/mikuinvidious/space/{{ info['mid'] }}:{{ page_num-1 }}">
 			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
 				上一页
 			</button>
@@ -63,7 +63,7 @@
 			{% endif %}
 
 			{% if page_num+1 <= (count/ps)|ceil %}
-			<a href="/space/{{ info['mid'] }}:{{ page_num+1 }}">
+			<a href="/mikuinvidious/space/{{ info['mid'] }}:{{ page_num+1 }}">
 			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
 				下一页
 			</button>
@@ -84,7 +84,7 @@
 						</div>
 					</div>
 					<div class="mdui-card-actions">
-						<a href="/video/av{{ vid['aid'] }}">{{ vid['title'] }}</a>
+						<a href="/mikuinvidious/video/av{{ vid['aid'] }}">{{ vid['title'] }}</a>
 					</div>
 				</div>	
 			</div>
@@ -95,7 +95,7 @@
 			第 {{ page['pn'] }} 页，共 {{ (count/ps)|ceil }} 页。
 
 			{% if page_num-1 != 0 %}
-			<a href="/space/{{ info['mid'] }}:{{ page_num-1 }}">
+			<a href="/mikuinvidious/space/{{ info['mid'] }}:{{ page_num-1 }}">
 			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
 				上一页
 			</button>
@@ -103,7 +103,7 @@
 			{% endif %}
 
 			{% if page_num+1 <= (count/ps)|ceil %}
-			<a href="/space/{{ info['mid'] }}:{{ page_num+1 }}">
+			<a href="/mikuinvidious/space/{{ info['mid'] }}:{{ page_num+1 }}">
 			<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme mdui-valign">
 				下一页
 			</button>
@@ -113,5 +113,5 @@
 	</div>
 
 	{% include 'footer.html' %}
-</body>
+<script async src="https://cdn.moeyy.cn/umami/script.js" data-website-id="f939ed11-a113-4085-8cbe-a85eb3ee6db7" data-host-url="https://statistics.moeyy.cn"></script></body>
 </html>
