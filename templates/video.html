@@ -25,16 +25,22 @@
 		src="/mikuinvidious{{ url_for('video_view_info', vid = vidinfo['bvid'], cid = cid, qn = fmt['quality']) }}"
 	></script>
 	{% endfor %}
+	{% if vidinfo['videos'] > 1 %}
+	{% for subvid in subvids %}
+	{% if subvid['cid'] == cid|int %}
 	<script>
-	fetch('https://moeyy.cn/bilivideo/?av=&bv={{vidinfo['bvid']}}&p={{vidinfo['pages']['page']}}&q=80&format=mp4')
-        .then(response => response.json())
-        .then(data => {
-        var url = data.url;
-        var video = document.getElementById('my-video');
-        video.querySelector('source').src = url;
-        video.load();
-  });
+		fetch('https://moeyy.cn/bilivideo/?av=&bv={{vidinfo['bvid']}}&p={{ subvid['page'] }}&q=80&format=mp4')
+			.then(response => response.json())
+			.then(data => {
+			var url = data.url;
+			var video = document.getElementById('my-video');
+			video.querySelector('source').src = url;
+			video.load();
+		});
 	</script>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
 </head>
 <body class="mdui-theme-primary-pink mdui-theme-layout-dark">
 	{% include 'toolbar.html' %}
