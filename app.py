@@ -114,12 +114,12 @@ def b32tv_redirect(b32tvid):
 		return flask.redirect(flask.url_for('video_page', vid = req.headers['Location'].split('/')[-1][:12]))
 
 @app.route('/vvinfo/<vid>:<cid>:<qn>')
-def video_view_info(vid, cid, qn = 16, page = 0):
+def video_view_info(vid, cid, qn = 16):
 	# Convert AVid to BVid to simplify handling.
 	if vid.lower().startswith('av'):
 		vid = av2bv(int(vid[2:]))
 
-	srcinfo = bbapi_src_from_bvid(cid, vid, qn, page)
+	srcinfo = bbapi_src_from_bvid(cid, vid, qn)
 
 	if srcinfo['code'] != 0:
 		return ''
@@ -129,9 +129,6 @@ def video_view_info(vid, cid, qn = 16, page = 0):
 
 	if not (srcinfo['data']['format'] == 'mp4' or srcinfo['data']['format'] == 'mp4720'):
 		return ''
-	
-	if page == 0:
-		page=srcinfo['data']['page']
 
 	return f'window.srcinfo[{qn}] = ' + json.dumps(srcinfo['data']) + ';'
 
