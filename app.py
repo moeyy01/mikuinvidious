@@ -114,12 +114,12 @@ def b32tv_redirect(b32tvid):
 		return flask.redirect(flask.url_for('video_page', vid = req.headers['Location'].split('/')[-1][:12]))
 
 @app.route('/vvinfo/<vid>:<cid>:<qn>')
-def video_view_info(vid, cid, qn = 16):
+def video_view_info(vid, cid, qn = 16, page = 0):
 	# Convert AVid to BVid to simplify handling.
 	if vid.lower().startswith('av'):
 		vid = av2bv(int(vid[2:]))
 
-	srcinfo = bbapi_src_from_bvid(cid, vid, qn)
+	srcinfo = bbapi_src_from_bvid(cid, vid, qn, page)
 
 	if srcinfo['code'] != 0:
 		return ''
@@ -129,6 +129,9 @@ def video_view_info(vid, cid, qn = 16):
 
 	if not (srcinfo['data']['format'] == 'mp4' or srcinfo['data']['format'] == 'mp4720'):
 		return ''
+	
+	if page == 0:
+		page=srcinfo['data']['page']
 
 	return f'window.srcinfo[{qn}] = ' + json.dumps(srcinfo['data']) + ';'
 
@@ -166,7 +169,7 @@ def member_page(mid, page_num = 1):
 @app.route('/video/<vid>/')
 @app.route('/video/<vid>:<cid>')
 @app.route('/video/<vid>:<cid>:<qn>')
-def video_page(vid, cid = 0, qn = 16, page = 0):
+def video_page(vid, cid = 0, qn = 16):
 	# Convert AVid to BVid to simplify handling.
 	if vid.lower().startswith('av'):
 		vid = av2bv(int(vid[2:]))
@@ -204,16 +207,13 @@ def video_page(vid, cid = 0, qn = 16, page = 0):
 	if cid == 0:
 		cid = vidinfo['data']['cid']
 	
-	if page == 0:
-		page=vidinfo['data']['page']
-
-	srcinfo = bbapi_src_from_bvid(cid, vid, qn, page)
+	srcinfo = bbapi_src_from_bvid(cid, vid, qn)
 	if srcinfo['code'] != 0:
 		return flask.redirect(flask.url_for('error', code = srcinfo['code'], id = vid))	 
 
 	return flask.render_template('video.html', vidinfo = vidinfo['data'], srcinfo = srcinfo['data'],
 	                             relatedvids = relatedvids['data'], comments = cums['data'],
-	                             subvids = subvids, cid = cid, page = page)
+	                             subvids = subvids, cid = cid)
 
 @app.route('/read/<cid>')
 def read_page(cid):
