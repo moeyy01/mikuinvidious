@@ -26,7 +26,7 @@
 	></script>
 	{% endfor %}
 	<script>
-	fetch('https://moeyy.cn/bilivideo/?av=&bv={{vidinfo['bvid']}}&p=1&q=80&format=mp4')
+	fetch('https://moeyy.cn/bilivideo/?av=&bv={{vidinfo['bvid']}}&p={{vidinfo['page']}}&q=80&format=mp4')
         .then(response => response.json())
         .then(data => {
         var url = data.url;
@@ -81,11 +81,11 @@
 			<div class="mdui-col-sm-2">
 				<div class="mdui-typo-subheading">
 					<!-- Actions -->
-					<a href="https://bilibili.com/video/{{ vidinfo['bvid'] }}/">在哔哩哔哩观看</a>
+					<a href="https://bilibili.com/video/{{ vidinfo['bvid'] }}/" target="_blank">在哔哩哔哩观看</a>
 					<br/>
-					<a href="/mikuinvidious/switch">切换 MikuInvidious 实例</a>
+					<a href="/mikuinvidious/switch" target="_blank">切换 MikuInvidious 实例</a>
 					<br/>
-					<a href="/mikuinvidious/embed/{{ vidinfo['bvid'] }}">嵌入式播放器</a>
+					<a href="/mikuinvidious/embed/{{ vidinfo['bvid'] }}" target="_blank">嵌入式播放器</a>
 					<br/>
 					<!-- <div class="js-only mdui-hidden">
 						<button class="mdui-btn mdui-color-theme" mdui-menu="{target: '#qnselector'}">切换画质</button>
@@ -121,8 +121,8 @@
 
 			<div class="mdui-col-sm-7">
 				<div class="mdui-row">
-					<a href="/mikuinvidious/space/{{ vidinfo['owner']['mid'] }}">
-					<!-- <a href="https://space.bilibili.com/{{ vidinfo['owner']['mid'] }}" target="_blank"> -->
+					<!-- <a href="/mikuinvidious/space/{{ vidinfo['owner']['mid'] }}"> -->
+					<a href="https://space.bilibili.com/{{ vidinfo['owner']['mid'] }}" target="_blank">
 						<div class="mdui-chip">
 							<img class="mdui-chip-icon" src="{{ vidinfo['owner']['face']|picproxy }}"/>
 							<span class="mdui-chip-title">

@@ -166,7 +166,7 @@ def member_page(mid, page_num = 1):
 @app.route('/video/<vid>/')
 @app.route('/video/<vid>:<cid>')
 @app.route('/video/<vid>:<cid>:<qn>')
-def video_page(vid, cid = 0, qn = 16):
+def video_page(vid, cid = 0, qn = 16, page = 0):
 	# Convert AVid to BVid to simplify handling.
 	if vid.lower().startswith('av'):
 		vid = av2bv(int(vid[2:]))
@@ -203,14 +203,17 @@ def video_page(vid, cid = 0, qn = 16):
 
 	if cid == 0:
 		cid = vidinfo['data']['cid']
+	
+	if page == 0:
+		page=vidinfo['data']['page']
 
-	srcinfo = bbapi_src_from_bvid(cid, vid, qn)
+	srcinfo = bbapi_src_from_bvid(cid, vid, qn, page)
 	if srcinfo['code'] != 0:
 		return flask.redirect(flask.url_for('error', code = srcinfo['code'], id = vid))	 
 
 	return flask.render_template('video.html', vidinfo = vidinfo['data'], srcinfo = srcinfo['data'],
 	                             relatedvids = relatedvids['data'], comments = cums['data'],
-	                             subvids = subvids, cid = cid)
+	                             subvids = subvids, cid = cid, page = page)
 
 @app.route('/read/<cid>')
 def read_page(cid):
