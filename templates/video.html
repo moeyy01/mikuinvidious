@@ -40,6 +40,17 @@
 	</script>
 	{% endif %}
 	{% endfor %}
+	{% elif vidinfo['videos'] == 1 %}
+	<script>
+		fetch('https://moeyy.cn/bilivideo/?av=&bv={{vidinfo['bvid']}}&p=1&q=80&format=mp4')
+			.then(response => response.json())
+			.then(data => {
+			var url = data.url;
+			var video = document.getElementById('my-video');
+			video.querySelector('source').src = url;
+			video.load();
+		});
+	</script>
 	{% endif %}
 </head>
 <body class="mdui-theme-primary-pink mdui-theme-layout-dark">
