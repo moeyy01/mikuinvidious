@@ -21,10 +21,12 @@
 
 	<script>window.srcinfo = {};</script>
 	{% for fmt in srcinfo['support_formats'] %}
-	<script type="application/javascript"
+
+	<!-- <script type="application/javascript"
 		src="/mikuinvidious{{ url_for('video_view_info', vid = vidinfo['bvid'], cid = cid, qn = fmt['quality']) }}"
 	></script>
-	{% endfor %}
+	{% endfor %} -->
+	
 	{% if vidinfo['videos'] > 1 %}
 	{% for subvid in subvids %}
 	{% if subvid['cid'] == cid|int %}
